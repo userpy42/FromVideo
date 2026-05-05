@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <title>FromVideo - Benvenuto!</title>
+</head>
+<body>
+    <div class="container" style="max-width: 600px;">
+        <h1>Benvenuto in FromVideo!</h1>
+        <p>Gira la card per riscattare il tuo regalo di attivazione.</p>
+        
+        <div class="card-scene">
+            <div class="card-inner" id="card" onclick="this.classList.toggle('is-flipped')">
+                <div class="card-face">
+                    <h3>GIFT CARD</h3>
+                    <p>Clicca per scoprire</p>
+                </div>
+                <div class="card-face card-back">
+                    <p>Il tuo codice è:</p>
+                    <h2 style="letter-spacing: 5px;">FROM2026</h2>
+                    <button onclick="window.location.href='subscription.html'" style="margin-top:10px; width:80%">Usa Codice</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
