@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <title>FromVideo - Home</title>
+</head>
+<body onload="FromVideo.checkAccess()">
+    <nav>
+        <img src="assets/logo.png" class="logo-img">
+        <div>
+            <a href="profile.html" style="color:white; text-decoration:none; margin-right:20px;">Profilo</a>
+            <button onclick="window.location.href='subscription.html'" style="width:auto; padding:5px 15px;">Abbonati</button>
+        </div>
+    </nav>
+
+    <div style="padding: 20px 5%;">
+        <h2>Film Consigliati</h2>
+        <div class="content-grid">
+            <div class="item-card"><div class="locked-overlay">Sbloccabile</div><img src="https://via.placeholder.com/200x300/121212/0070f3?text=film1" width="100%"></div>
+            <div class="item-card"><div class="locked-overlay">Sbloccabile</div><img src="https://via.placeholder.com/200x300/121212/0070f3?text=film2" width="100%"></div>
+            <div class="item-card"><div class="locked-overlay">Sbloccabile</div><img src="https://via.placeholder.com/200x300/121212/0070f3?text=film3" width="100%"></div>
+            <div class="item-card"><div class="locked-overlay">Sbloccabile</div><img src="https://via.placeholder.com/200x300/121212/0070f3?text=film4" width="100%"></div>
+        </div>
+
+        <h2>Serie TV</h2>
+        <div class="content-grid">
+            <div class="item-card" onclick="openEpisodes('Serie 1')"><div class="locked-overlay">Abbonati</div><img src="https://via.placeholder.com/200x300/0070f3/000000?text=serie1" width="100%"></div>
+            <div class="item-card" onclick="openEpisodes('Serie 2')"><div class="locked-overlay">Abbonati</div><img src="https://via.placeholder.com/200x300/0070f3/000000?text=serie2" width="100%"></div>
+            <div class="item-card" onclick="openEpisodes('Serie 3')"><div class="locked-overlay">Abbonati</div><img src="https://via.placeholder.com/200x300/0070f3/000000?text=serie3" width="100%"></div>
+            <div class="item-card" onclick="openEpisodes('Serie 4')"><div class="locked-overlay">Abbonati</div><img src="https://via.placeholder.com/200x300/0070f3/000000?text=serie4" width="100%"></div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
