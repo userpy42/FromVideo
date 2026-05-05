@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>FromVideo - Registrati</title>
+</head>
+<body>
+    <div class="container">
+        <img src="assets/logo.png" class="logo-img" alt="FromVideo Logo">
+        <h2>Crea il tuo account</h2>
+        <input type="text" id="username" placeholder="Nome Utente">
+        <input type="password" placeholder="Password">
+        <button onclick="FromVideo.register(document.getElementById('username').value)">Registrati Gratis</button>
+        <p style="margin-top:15px; font-size: 0.8rem;">Hai già un account? <a href="login.html" style="color:var(--primary-blue)">Accedi</a></p>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
