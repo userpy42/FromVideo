@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>FromVideo - Profilo</title>
+</head>
+<body>
+    <nav>
+        <img src="assets/logo.png" class="logo-img">
+        <a href="dashboard.html" style="color:white; text-decoration:none;">Torna al Catalogo</a>
+    </nav>
+
+    <div class="container">
+        <h2>Il tuo Profilo</h2>
+        <div style="margin: 20px 0;">
+            <img id="user-avatar" src="https://via.placeholder.com/100/0070f3/FFFFFF?text=Avatar" 
+                 style="width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--primary-blue); object-fit: cover;">
+        </div>
+        
+        <h3 id="profile-name">Caricamento...</h3>
+        <p id="profile-status" style="color: var(--text-gray); margin-bottom: 20px;">Abbonamento: Nessuno</p>
+
+        <hr style="border: 0.5px solid #333; margin-bottom: 20px;">
+
+        <div style="text-align: left;">
+            <label style="font-size: 0.8rem; color: var(--text-gray);">Cambia Avatar (Inserisci URL immagine)</label>
+            <input type="text" id="new-avatar-url" placeholder="https://link-immagine.com/foto.jpg">
+            <button onclick="updateAvatar()">Salva Immagine</button>
+        </div>
+
+        <button onclick="localStorage.clear(); window.location.href='index.html'" 
+                style="background: #444; margin-top: 20px;">Logout</button>
+    </div>
+
+    <script>
+        // Recupera dati dal LocalStorage
+        const username = localStorage.getItem('fv_user') || 'Utente';
+        const subStatus = localStorage.getItem('fv_sub') === 'true' ? 'Attivo' : 'Non Attivo';
+        const plan = localStorage.getItem('fv_plan') || 'Nessuno';
+        const savedAvatar = localStorage.getItem('fv_avatar');
+
+        document.getElementById('profile-name').innerText = username;
+        document.getElementById('profile-status').innerText = 'Piano ' + plan + ' (' + subStatus + ')';
+        if(savedAvatar) document.getElementById('user-avatar').src = savedAvatar;
+
+        function updateAvatar() {
+            const url = document.getElementById('new-avatar-url').value;
+            if(url) {
+                localStorage.setItem('fv_avatar', url);
+                document.getElementById('user-avatar').src = url;
+                alert("Avatar aggiornato!");
+            }
+        }
+    </script>
+</body>
+</html>
