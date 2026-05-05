@@ -1,20 +1,140 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>FromVideo - Registrati</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FromVideo — Guarda. Scopri. Vivi.</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 </head>
-<body>
-    <div class="container">
-        <img src="assets/logo.png" class="logo-img" alt="FromVideo Logo">
-        <h2>Crea il tuo account</h2>
-        <input type="text" id="username" placeholder="Nome Utente">
-        <input type="password" placeholder="Password">
-        <button onclick="FromVideo.register(document.getElementById('username').value)">Registrati Gratis</button>
-        <p style="margin-top:15px; font-size: 0.8rem;">Hai già un account? <a href="login.html" style="color:var(--primary-blue)">Accedi</a></p>
+<body class="home-page">
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-logo">FROM<span>VIDEO</span></div>
+    <div class="nav-actions">
+      <button class="btn-ghost" onclick="showModal('login')">Accedi</button>
+      <button class="btn-primary" onclick="showModal('register')">Registrati</button>
     </div>
-    <script src="js/script.js"></script>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-gradient"></div>
+      <div class="hero-grid"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">🎬 La tua piattaforma italiana</div>
+      <h1 class="hero-title">Film e Serie.<br/>Quando vuoi,<br/><span class="accent">Come vuoi.</span></h1>
+      <p class="hero-sub">Accedi a centinaia di contenuti esclusivi. Inizia oggi con un piano su misura per te.</p>
+      <div class="hero-cta">
+        <button class="btn-primary btn-lg" onclick="showModal('register')">Inizia Gratis</button>
+        <button class="btn-ghost btn-lg" onclick="showModal('login')">Hai già un account?</button>
+      </div>
+      <div class="hero-plans-preview">
+        <div class="plan-chip">Base 4,99€/mese</div>
+        <div class="plan-chip active">Standard 9,99€/mese</div>
+        <div class="plan-chip">Premium 19,99€/mese</div>
+      </div>
+    </div>
+    <div class="hero-mockup">
+      <div class="mockup-screen">
+        <div class="mockup-thumb" style="background:linear-gradient(135deg,#1a2a4a,#0d1b2a)">
+          <div class="play-btn-mock">▶</div>
+          <div class="mockup-label">Film 1</div>
+        </div>
+        <div class="mockup-row">
+          <div class="mockup-mini" style="background:linear-gradient(135deg,#1e3a5f,#0a1628)"></div>
+          <div class="mockup-mini" style="background:linear-gradient(135deg,#0d2137,#1a3a5c)"></div>
+          <div class="mockup-mini" style="background:linear-gradient(135deg,#162d4a,#0e2035)"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <h2>Perché FromVideo?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🎁</div>
+        <h3>Gift Card di Benvenuto</h3>
+        <p>Ogni nuovo iscritto riceve una Gift Card esclusiva per sbloccare contenuti premium gratuitamente.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📺</div>
+        <h3>Catalogo Ricco</h3>
+        <p>4 film e 4 serie con episodi completi. Nuovi contenuti aggiunti regolarmente.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Streaming Veloce</h3>
+        <p>Qualità adattiva per una riproduzione fluida su qualsiasi connessione.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👤</div>
+        <h3>Profilo Personalizzato</h3>
+        <p>Avatar, preferenze e storico visioni tutto in un unico posto.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-logo">FROM<span>VIDEO</span></div>
+    <p>Progetto di Tesi — Kristian Lefter, 4 I — A.S. 2025/26</p>
+    <p class="footer-tech">HTML5 · CSS3 · JavaScript Vanilla</p>
+  </footer>
+
+  <!-- MODAL LOGIN -->
+  <div id="modal-login" class="modal-overlay" onclick="closeModalOutside(event,'login')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('login')">✕</button>
+      <div class="modal-logo">FROM<span>VIDEO</span></div>
+      <h2>Bentornato</h2>
+      <p class="modal-sub">Accedi al tuo account</p>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="login-email" placeholder="tuanome@email.com" />
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="login-password" placeholder="••••••••" />
+      </div>
+      <div id="login-error" class="form-error"></div>
+      <button class="btn-primary btn-full" onclick="handleLogin()">Accedi</button>
+      <p class="modal-switch">Non hai un account? <a onclick="switchModal('login','register')">Registrati</a></p>
+    </div>
+  </div>
+
+  <!-- MODAL REGISTER -->
+  <div id="modal-register" class="modal-overlay" onclick="closeModalOutside(event,'register')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('register')">✕</button>
+      <div class="modal-logo">FROM<span>VIDEO</span></div>
+      <h2>Crea Account</h2>
+      <p class="modal-sub">Unisciti a FromVideo oggi</p>
+      <div class="form-group">
+        <label>Nome completo</label>
+        <input type="text" id="reg-name" placeholder="Mario Rossi" />
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="reg-email" placeholder="tuanome@email.com" />
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="reg-password" placeholder="Minimo 6 caratteri" />
+      </div>
+      <div id="reg-error" class="form-error"></div>
+      <button class="btn-primary btn-full" onclick="handleRegister()">Registrati e ricevi la Gift Card 🎁</button>
+      <p class="modal-switch">Hai già un account? <a onclick="switchModal('register','login')">Accedi</a></p>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
