@@ -2,6 +2,7 @@
 
 > **Tesina Tecnica · Anno Scolastico 2025/2026**  
 > **Alunno:** Kristian Lefter · **Classe:** 4I
+> AFMG (Accademia Formativa Martesana di Gorgonzola)
 
 ---
 
