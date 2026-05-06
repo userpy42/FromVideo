@@ -1,0 +1,147 @@
+/* catalog.css */
+
+/* Lock Screen */
+.lock-screen {
+  min-height: calc(100vh - 64px); display: flex;
+  align-items: center; justify-content: center; padding: 2rem;
+  background: radial-gradient(ellipse at center, rgba(37,99,235,0.08) 0%, transparent 70%);
+}
+.lock-card {
+  max-width: 480px; width: 100%; text-align: center;
+  padding: 3rem 2rem;
+}
+.lock-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+.lock-card h2 { font-size: 1.6rem; margin-bottom: 0.75rem; }
+.lock-card p { color: var(--text-secondary); margin-bottom: 2rem; }
+.lock-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+/* Catalog Hero */
+.catalog-hero {
+  position: relative; height: 500px; display: flex; align-items: flex-end;
+  overflow: hidden;
+}
+.catalog-hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #1e3a8a 0%, #0a0a0f 60%);
+}
+.catalog-hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, var(--bg-primary) 0%, transparent 60%),
+              linear-gradient(to right, var(--bg-primary) 0%, transparent 50%);
+}
+.catalog-hero-inner {
+  position: relative; z-index: 2; padding-bottom: 3rem;
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.catalog-hero-title { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1; }
+.catalog-hero-desc { max-width: 500px; color: var(--text-secondary); font-size: 0.95rem; }
+.catalog-hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.catalog-hero-meta { display: flex; align-items: center; gap: 1rem; }
+
+/* Catalog Main */
+.catalog-main { padding: 2rem 0 4rem; }
+
+/* Filters */
+.catalog-filters { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.catalog-search { max-width: 320px; }
+.filter-tabs { display: flex; gap: 0.5rem; }
+.filter-tab {
+  padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem;
+  background: var(--bg-secondary); border: 1px solid var(--border);
+  color: var(--text-secondary); transition: var(--transition); cursor: pointer;
+}
+.filter-tab.active, .filter-tab:hover {
+  background: var(--blue-bright); color: white; border-color: var(--blue-bright);
+}
+
+/* Content Row */
+.catalog-row { margin-bottom: 3rem; }
+.row-title { font-size: 1.2rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem; }
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.2rem;
+}
+
+/* Content Card */
+.content-card { border-radius: var(--radius-lg); overflow: hidden; cursor: pointer; transition: var(--transition); }
+.content-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.5); }
+.cc-thumb {
+  position: relative; height: 130px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.cc-thumb-label { font-size: 2.5rem; opacity: 0.25; }
+.cc-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.6); opacity: 0;
+  display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+  transition: var(--transition);
+}
+.content-card:hover .cc-overlay { opacity: 1; }
+.cc-play-btn, .cc-info-btn {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; transition: var(--transition); cursor: pointer;
+  border: none;
+}
+.cc-play-btn { background: var(--blue-bright); color: white; }
+.cc-play-btn:hover { background: var(--blue-mid); transform: scale(1.1); }
+.cc-info-btn { background: rgba(255,255,255,0.15); color: white; backdrop-filter: blur(4px); }
+.cc-info-btn:hover { background: rgba(255,255,255,0.25); }
+.cc-rating {
+  position: absolute; top: 0.5rem; right: 0.5rem;
+  background: rgba(0,0,0,0.7); font-size: 0.72rem;
+  padding: 0.2rem 0.4rem; border-radius: 4px;
+}
+.cc-info { background: var(--bg-card); padding: 0.85rem; border: 1px solid var(--border); border-top: none; border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+.cc-title { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; }
+.cc-meta { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+
+/* Player Modal */
+.player-modal { max-width: 700px; }
+.player-screen { background: #000; border-radius: var(--radius); overflow: hidden; }
+.player-placeholder {
+  height: 360px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 1rem;
+  background: linear-gradient(135deg, #0a0a14, #111827);
+}
+.player-play-btn { font-size: 4rem; opacity: 0.15; }
+.player-placeholder p { color: var(--text-secondary); font-size: 0.9rem; }
+.player-controls { padding: 1rem; background: rgba(0,0,0,0.8); }
+.player-bar { height: 4px; background: rgba(255,255,255,0.15); border-radius: 2px; margin-bottom: 0.75rem; cursor: pointer; }
+.player-progress { height: 100%; background: var(--blue-bright); border-radius: 2px; width: 0%; transition: width 1s linear; }
+.player-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--text-secondary); }
+.player-btns { display: flex; gap: 0.5rem; }
+
+/* Details Modal */
+.details-modal { max-width: 600px; }
+.details-thumb {
+  height: 160px; border-radius: var(--radius); margin-bottom: 1.5rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.details-meta { margin-bottom: 1.5rem; }
+
+/* Episodes */
+.episodes-list { border-top: 1px solid var(--border); padding-top: 1.5rem; }
+.episode-item {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.85rem; border-radius: var(--radius);
+  background: var(--bg-secondary); border: 1px solid var(--border);
+  margin-bottom: 0.6rem; cursor: pointer; transition: var(--transition);
+}
+.episode-item:hover { border-color: var(--border-hover); background: var(--bg-hover); }
+.ep-num {
+  width: 36px; height: 36px; background: var(--blue-dark);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 700; color: var(--blue-accent); flex-shrink: 0;
+}
+.ep-info { flex: 1; }
+.ep-title { font-size: 0.9rem; font-weight: 500; }
+
+@media (max-width: 768px) {
+  .catalog-hero { height: 380px; }
+  .catalog-hero-actions .btn { width: 100%; }
+  .content-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .player-placeholder { height: 220px; }
+}
