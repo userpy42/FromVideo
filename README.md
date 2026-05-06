@@ -37,7 +37,6 @@
 ```
 fromvideo/
 ├── index.html              # Homepage
-├── netlify.toml            # Config Netlify
 ├── README.md               # Documentazione
 ├── assets/
 │   └── images/             # Avatar SVG
@@ -104,4 +103,5 @@ fromvideo/
 
 **Kristian Lefter** — Classe 4I  
 Anno Scolastico 2025/2026  
-Tesina di Tecnologia Web
+Tesina Tecnica 
+AFMG
