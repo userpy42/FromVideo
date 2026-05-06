@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catalogo — FromVideo</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/catalog.css" />
+</head>
+<body>
+<nav class="navbar">
+  <a href="../index.html" class="navbar-logo">FROM<span>VIDEO</span></a>
+  <ul class="navbar-nav" id="main-nav">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="catalog.html" class="active">Catalogo</a></li>
+    <li><a href="plans.html">Abbonamenti</a></li>
+    <li id="nav-login-btn"><a href="login.html" class="btn btn-primary btn-sm">Accedi</a></li>
+    <li id="nav-user-menu" class="hidden" style="display:flex;align-items:center;gap:0.75rem">
+      <a href="profile.html"><img src="../assets/images/avatar-default.svg" alt="avatar" class="nav-avatar" id="nav-avatar"/></a>
+    </li>
+  </ul>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-wrapper">
+  <!-- Lock Screen -->
+  <div id="lock-screen" class="lock-screen hidden">
+    <div class="lock-card card">
+      <div class="lock-icon">🔒</div>
+      <h2>Contenuti Riservati</h2>
+      <p>Attiva un abbonamento oppure usa la tua gift card per accedere a film e serie TV.</p>
+      <div class="lock-actions">
+        <a href="plans.html" class="btn btn-primary btn-lg">Abbonati ora</a>
+        <a href="plans.html#gc" class="btn btn-outline btn-lg">Usa Gift Card</a>
+      </div>
+      <p class="text-muted" style="font-size:0.8rem;margin-top:1rem">Non sei registrato? <a href="register.html" style="color:var(--blue-accent)">Crea un account</a></p>
+    </div>
+  </div>
+
+  <!-- Catalog Content -->
+  <div id="catalog-content" class="hidden">
+    <!-- Hero Banner -->
+    <div class="catalog-hero">
+      <div class="catalog-hero-bg"></div>
+      <div class="container catalog-hero-inner">
+        <span class="badge badge-blue">In evidenza</span>
+        <h1 class="catalog-hero-title display-font">FILM1</h1>
+        <p class="catalog-hero-desc">Un'avventura epica che attraversa continenti e secoli. Il film più atteso dell'anno è finalmente disponibile su FromVideo.</p>
+        <div class="catalog-hero-actions">
+          <button class="btn btn-primary btn-lg" onclick="openPlayer('Film1','film')">▶ Guarda Ora</button>
+          <button class="btn btn-outline btn-lg" onclick="openDetails('film1')">ℹ Info</button>
+        </div>
+        <div class="catalog-hero-meta">
+          <span class="badge badge-green">HD</span>
+          <span class="text-muted">2024 · Azione · 2h 18m</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container catalog-main">
+      <!-- Search & Filter -->
+      <div class="catalog-filters">
+        <input type="text" class="form-input catalog-search" id="catalog-search" placeholder="🔍  Cerca film o serie..." />
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-filter="all">Tutti</button>
+          <button class="filter-tab" data-filter="film">Film</button>
+          <button class="filter-tab" data-filter="serie">Serie TV</button>
+        </div>
+      </div>
+
+      <!-- Films Row -->
+      <section class="catalog-row" id="films-row">
+        <h2 class="row-title">🎬 Film</h2>
+        <div class="content-grid" id="films-grid"></div>
+      </section>
+
+      <!-- Series Row -->
+      <section class="catalog-row" id="series-row">
+        <h2 class="row-title">📺 Serie TV</h2>
+        <div class="content-grid" id="series-grid"></div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- Player Modal -->
+<div class="modal-overlay" id="player-modal">
+  <div class="modal player-modal">
+    <div class="modal-header">
+      <span class="modal-title" id="player-title">Film1</span>
+      <button class="modal-close" onclick="closeModal('player-modal')">✕</button>
+    </div>
+    <div class="player-screen">
+      <div class="player-placeholder">
+        <div class="player-play-btn">▶</div>
+        <p id="player-now-playing">Film1</p>
+        <span class="badge badge-blue">Simulazione · Nessun video reale</span>
+      </div>
+      <div class="player-controls">
+        <div class="player-bar"><div class="player-progress" id="player-progress"></div></div>
+        <div class="player-meta">
+          <span id="player-time">00:00</span>
+          <div class="player-btns">
+            <button class="btn-ghost btn-sm" id="play-pause-btn" onclick="togglePlay()">▶ Play</button>
+            <button class="btn-ghost btn-sm">⛶ Fullscreen</button>
+          </div>
+          <span>2:18:00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Details Modal -->
+<div class="modal-overlay" id="details-modal">
+  <div class="modal details-modal">
+    <div class="modal-header">
+      <span class="modal-title" id="details-title">Film1</span>
+      <button class="modal-close" onclick="closeModal('details-modal')">✕</button>
+    </div>
+    <div id="details-body"></div>
+  </div>
+</div>
+
+<div class="toast-container"></div>
+<script src="../js/app.js"></script>
+<script src="../js/catalog.js"></script>
+</body>
+</html>

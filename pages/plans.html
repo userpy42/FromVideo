@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abbonamenti — FromVideo</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/plans.css" />
+</head>
+<body>
+<nav class="navbar">
+  <a href="../index.html" class="navbar-logo">FROM<span>VIDEO</span></a>
+  <ul class="navbar-nav" id="main-nav">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="catalog.html">Catalogo</a></li>
+    <li><a href="plans.html" class="active">Abbonamenti</a></li>
+    <li id="nav-login-btn"><a href="login.html" class="btn btn-primary btn-sm">Accedi</a></li>
+    <li id="nav-user-menu" class="hidden" style="display:flex;align-items:center;gap:0.75rem">
+      <a href="profile.html"><img src="../assets/images/avatar-default.svg" alt="avatar" class="nav-avatar" id="nav-avatar"/></a>
+    </li>
+  </ul>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-wrapper">
+  <div class="container">
+    <div class="plans-page-header text-center">
+      <p class="section-eyebrow">Prezzi semplici e trasparenti</p>
+      <h1 class="section-title display-font">Scegli il tuo Piano</h1>
+      <p class="plans-subtitle">Inizia oggi. Disdici quando vuoi. Nessun costo nascosto.</p>
+
+      <!-- Gift Card Activation -->
+      <div class="giftcard-activate card" id="gc-activate-box">
+        <div class="gc-activate-inner">
+          <span class="gc-icon">🎁</span>
+          <div>
+            <p class="gc-activate-label">Hai una gift card?</p>
+            <p class="gc-activate-sub">Inserisci il codice per attivare l'abbonamento Standard gratuitamente</p>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="openGCModal()">Usa Codice</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Current sub banner -->
+    <div id="current-sub-banner" class="current-sub hidden"></div>
+
+    <!-- Plans -->
+    <div class="plans-full-grid" id="plans-grid">
+      <!-- Base -->
+      <div class="plan-full-card card" data-plan="base">
+        <div class="pf-header">
+          <div class="pf-name">Base</div>
+          <div class="pf-price">€4<span>,99</span><small>/mese</small></div>
+          <p class="pf-desc">Perfetto per iniziare</p>
+        </div>
+        <ul class="pf-features">
+          <li class="yes">✓ Film e Serie TV inclusi</li>
+          <li class="yes">✓ 1 schermo simultaneo</li>
+          <li class="yes">✓ Qualità HD (720p)</li>
+          <li class="yes">✓ Accesso da mobile e PC</li>
+          <li class="no">✗ Download offline</li>
+          <li class="no">✗ Ultra HD 4K</li>
+          <li class="no">✗ Profili multipli</li>
+        </ul>
+        <button class="btn btn-outline w-full pf-btn" onclick="selectPlan('base','4,99')">Scegli Base</button>
+      </div>
+
+      <!-- Standard -->
+      <div class="plan-full-card card plan-full-popular" data-plan="standard">
+        <div class="popular-ribbon">⭐ PIÙ SCELTO</div>
+        <div class="pf-header">
+          <div class="pf-name">Standard</div>
+          <div class="pf-price">€9<span>,99</span><small>/mese</small></div>
+          <p class="pf-desc">Il migliore per la maggior parte</p>
+        </div>
+        <ul class="pf-features">
+          <li class="yes">✓ Film e Serie TV inclusi</li>
+          <li class="yes">✓ 2 schermi simultanei</li>
+          <li class="yes">✓ Qualità Full HD (1080p)</li>
+          <li class="yes">✓ Accesso da mobile e PC</li>
+          <li class="yes">✓ Download offline (2 titoli)</li>
+          <li class="no">✗ Ultra HD 4K</li>
+          <li class="no">✗ Profili multipli</li>
+        </ul>
+        <button class="btn btn-primary w-full pf-btn" onclick="selectPlan('standard','9,99')">Scegli Standard</button>
+      </div>
+
+      <!-- Premium -->
+      <div class="plan-full-card card" data-plan="premium">
+        <div class="pf-header">
+          <div class="pf-name">Premium</div>
+          <div class="pf-price">€19<span>,99</span><small>/mese</small></div>
+          <p class="pf-desc">L'esperienza completa</p>
+        </div>
+        <ul class="pf-features">
+          <li class="yes">✓ Film e Serie TV inclusi</li>
+          <li class="yes">✓ 4 schermi simultanei</li>
+          <li class="yes">✓ Qualità Ultra HD 4K</li>
+          <li class="yes">✓ Accesso da mobile e PC</li>
+          <li class="yes">✓ Download offline illimitati</li>
+          <li class="yes">✓ Audio Dolby Atmos</li>
+          <li class="yes">✓ 5 profili personali</li>
+        </ul>
+        <button class="btn btn-outline w-full pf-btn" onclick="selectPlan('premium','19,99')">Scegli Premium</button>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section section">
+      <h2 class="text-center" style="margin-bottom:2rem">Domande Frequenti</h2>
+      <div class="faq-grid">
+        <div class="faq-item card">
+          <h4>Posso disdire in qualsiasi momento?</h4>
+          <p>Sì, puoi disdire l'abbonamento quando vuoi senza penali. L'accesso rimane attivo fino alla fine del periodo pagato.</p>
+        </div>
+        <div class="faq-item card">
+          <h4>Come funziona la gift card?</h4>
+          <p>Ogni nuovo utente riceve una gift card con un codice univoco che sblocca l'abbonamento Standard per un mese gratis.</p>
+        </div>
+        <div class="faq-item card">
+          <h4>Su quanti dispositivi posso guardare?</h4>
+          <p>Dipende dal piano: Base (1 schermo), Standard (2 schermi), Premium (4 schermi).</p>
+        </div>
+        <div class="faq-item card">
+          <h4>I pagamenti sono sicuri?</h4>
+          <p>In questa simulazione nessun dato reale viene elaborato. È un progetto didattico.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Payment Modal -->
+<div class="modal-overlay" id="payment-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title">💳 Simulazione Pagamento</span>
+      <button class="modal-close" onclick="closeModal('payment-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="pay-summary">
+        <div class="pay-plan-name" id="pay-plan-name">Piano Standard</div>
+        <div class="pay-plan-price" id="pay-plan-price">€9,99/mese</div>
+      </div>
+      <form id="payment-form" class="auth-form" style="margin-top:1.5rem" novalidate>
+        <div class="form-group">
+          <label class="form-label">Numero carta (simulato)</label>
+          <input type="text" class="form-input" id="card-num" placeholder="1234 5678 9012 3456" maxlength="19" />
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div class="form-group">
+            <label class="form-label">Scadenza</label>
+            <input type="text" class="form-input" id="card-exp" placeholder="MM/AA" maxlength="5" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">CVV</label>
+            <input type="text" class="form-input" id="card-cvv" placeholder="123" maxlength="3" />
+          </div>
+        </div>
+        <div class="sim-notice">⚠️ Simulazione — nessun addebito reale</div>
+        <button type="submit" class="btn btn-primary w-full btn-lg">Conferma Pagamento →</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Gift Code Modal -->
+<div class="modal-overlay" id="gc-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title">🎁 Usa Gift Card</span>
+      <button class="modal-close" onclick="closeModal('gc-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="text-secondary" style="margin-bottom:1.2rem">Inserisci il codice della tua gift card per attivare l'abbonamento Standard gratuitamente.</p>
+      <div class="form-group">
+        <label class="form-label">Codice Gift Card</label>
+        <input type="text" class="form-input" id="gc-input" placeholder="XXXX-XXXX-XXXX-XXXX" style="font-family:monospace;letter-spacing:2px;text-transform:uppercase" />
+        <span class="form-error" id="gc-error">Codice non valido</span>
+      </div>
+      <button class="btn btn-primary w-full mt-2" onclick="applyGiftCode()">Attiva</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container"></div>
+<script src="../js/app.js"></script>
+<script>
+let selectedPlan = '';
+let selectedPrice = '';
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateNavAuth();
+  const user = Auth.getUser();
+  if (user && user.subscription && user.subscription !== 'none') {
+    const banner = document.getElementById('current-sub-banner');
+    const names = { base: 'Base', standard: 'Standard', premium: 'Premium' };
+    banner.innerHTML = `<span>✅ Abbonamento attivo: <strong>${names[user.subscription] || user.subscription}</strong> — <a href="catalog.html" style="color:var(--blue-accent)">Vai al Catalogo →</a></span>`;
+    banner.classList.remove('hidden');
+    // Mark current plan
+    document.querySelectorAll('.plan-full-card').forEach(c => {
+      if (c.dataset.plan === user.subscription) c.classList.add('plan-active');
+    });
+  }
+
+  // Card number formatting
+  document.getElementById('card-num').addEventListener('input', (e) => {
+    let v = e.target.value.replace(/\D/g,'').substring(0,16);
+    e.target.value = v.replace(/(.{4})/g,'$1 ').trim();
+  });
+  document.getElementById('card-exp').addEventListener('input', (e) => {
+    let v = e.target.value.replace(/\D/g,'');
+    if (v.length >= 2) v = v.substring(0,2)+'/'+v.substring(2,4);
+    e.target.value = v;
+  });
+
+  document.getElementById('payment-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!Auth.isLoggedIn()) { window.location.href = 'login.html'; return; }
+    activatePlan(selectedPlan);
+  });
+});
+
+function selectPlan(plan, price) {
+  if (!Auth.isLoggedIn()) { window.location.href = 'login.html'; return; }
+  selectedPlan = plan;
+  selectedPrice = price;
+  const names = { base:'Base', standard:'Standard', premium:'Premium' };
+  document.getElementById('pay-plan-name').textContent = 'Piano ' + names[plan];
+  document.getElementById('pay-plan-price').textContent = '€' + price + '/mese';
+  document.getElementById('payment-modal').classList.add('open');
+}
+
+function activatePlan(plan) {
+  const user = Auth.getUser();
+  user.subscription = plan;
+  user.subDate = new Date().toISOString();
+  Auth.setUser(user);
+  // Update in users array
+  const users = Storage.get('fv_users') || [];
+  const idx = users.findIndex(u => u.id === user.id);
+  if (idx > -1) { users[idx] = user; Storage.set('fv_users', users); }
+  closeModal('payment-modal');
+  Toast.show('Abbonamento attivato!', 'success');
+  setTimeout(() => window.location.href = 'catalog.html', 1500);
+}
+
+function openGCModal() {
+  if (!Auth.isLoggedIn()) { window.location.href = 'login.html'; return; }
+  document.getElementById('gc-modal').classList.add('open');
+}
+
+function applyGiftCode() {
+  const input = document.getElementById('gc-input').value.trim().toUpperCase();
+  const user = Auth.getUser();
+  if (!user) { window.location.href = 'login.html'; return; }
+
+  // Validate against the user's own code
+  if (input === user.giftCode) {
+    user.subscription = 'standard';
+    user.subDate = new Date().toISOString();
+    user.giftCode = null; // used
+    Auth.setUser(user);
+    const users = Storage.get('fv_users') || [];
+    const idx = users.findIndex(u => u.id === user.id);
+    if (idx > -1) { users[idx] = user; Storage.set('fv_users', users); }
+    closeModal('gc-modal');
+    Toast.show('Gift card attivata! Abbonamento Standard attivo.', 'success');
+    setTimeout(() => window.location.href = 'catalog.html', 1500);
+  } else {
+    document.getElementById('gc-error').classList.add('show');
+  }
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+</script>
+</body>
+</html>

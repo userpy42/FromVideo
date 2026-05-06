@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registrati — FromVideo</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/auth.css" />
+</head>
+<body>
+<nav class="navbar">
+  <a href="../index.html" class="navbar-logo">FROM<span>VIDEO</span></a>
+  <ul class="navbar-nav" id="main-nav">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="plans.html">Abbonamenti</a></li>
+  </ul>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-wrapper auth-page">
+  <div class="container">
+    <div class="auth-card card">
+      <div class="auth-logo">FROM<span>VIDEO</span></div>
+      <h1 class="auth-title">Crea il tuo account</h1>
+      <p class="auth-subtitle">Registrati gratis e ricevi la tua gift card</p>
+
+      <form id="register-form" class="auth-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nome</label>
+            <input type="text" class="form-input" id="reg-name" placeholder="Mario" />
+            <span class="form-error" id="err-name">Inserisci il tuo nome</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Cognome</label>
+            <input type="text" class="form-input" id="reg-surname" placeholder="Rossi" />
+            <span class="form-error" id="err-surname">Inserisci il tuo cognome</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" id="reg-email" placeholder="mario@email.com" />
+          <span class="form-error" id="err-email">Inserisci un'email valida</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <div class="input-wrapper">
+            <input type="password" class="form-input" id="reg-password" placeholder="Almeno 6 caratteri" />
+            <button type="button" class="toggle-pw" data-target="reg-password">👁</button>
+          </div>
+          <span class="form-error" id="err-password">La password deve avere almeno 6 caratteri</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Conferma Password</label>
+          <div class="input-wrapper">
+            <input type="password" class="form-input" id="reg-confirm" placeholder="Ripeti la password" />
+            <button type="button" class="toggle-pw" data-target="reg-confirm">👁</button>
+          </div>
+          <span class="form-error" id="err-confirm">Le password non coincidono</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-full btn-lg" id="submit-btn">
+          Crea Account
+        </button>
+      </form>
+
+      <p class="auth-switch">Hai già un account? <a href="login.html">Accedi</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- Gift Card Modal -->
+<div class="modal-overlay" id="giftcard-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title">🎁 Benvenuto su FromVideo!</span>
+    </div>
+    <div class="modal-body">
+      <p class="text-secondary" style="margin-bottom:1.5rem">Hai ricevuto una gift card di benvenuto! Clicca sulla card per scoprire il tuo codice esclusivo.</p>
+      <div class="giftcard" id="giftcard">
+        <div class="giftcard-inner">
+          <div class="giftcard-front">
+            <div class="gc-logo display-font">FROMVIDEO</div>
+            <div class="gc-gift-icon">🎁</div>
+            <div class="gc-label">Gift Card di Benvenuto</div>
+            <div class="gc-hint">Clicca per rivelare</div>
+          </div>
+          <div class="giftcard-back">
+            <div class="gc-back-label">Il tuo codice:</div>
+            <div class="gc-code" id="gc-code">XXXX-XXXX-XXXX-XXXX</div>
+            <div class="gc-back-hint">Usa questo codice per attivare l'abbonamento</div>
+          </div>
+        </div>
+      </div>
+      <div class="gc-actions mt-3 hidden" id="gc-actions">
+        <button class="btn btn-primary w-full" onclick="copyCode()">📋 Copia Codice</button>
+        <a href="plans.html" class="btn btn-outline w-full mt-1">Attiva Abbonamento →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container"></div>
+<script src="../js/app.js"></script>
+<script>
+let giftCode = '';
+let cardFlipped = false;
+
+document.addEventListener('DOMContentLoaded', () => {
+  // If already logged in, redirect
+  if (Auth.isLoggedIn()) window.location.href = 'catalog.html';
+
+  // Toggle password visibility
+  document.querySelectorAll('.toggle-pw').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const input = document.getElementById(btn.dataset.target);
+      input.type = input.type === 'password' ? 'text' : 'password';
+    });
+  });
+
+  // Register form
+  document.getElementById('register-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('reg-name').value.trim();
+    const surname = document.getElementById('reg-surname').value.trim();
+    const email = document.getElementById('reg-email').value.trim();
+    const password = document.getElementById('reg-password').value;
+    const confirm = document.getElementById('reg-confirm').value;
+
+    let valid = true;
+    const showErr = (id, show) => { document.getElementById(id).classList.toggle('show', show); if (show) valid = false; };
+
+    showErr('err-name', !name);
+    showErr('err-surname', !surname);
+    showErr('err-email', !email || !email.includes('@'));
+    showErr('err-password', password.length < 6);
+    showErr('err-confirm', password !== confirm);
+
+    if (!valid) return;
+
+    // Check if email already used (in this demo, just localStorage)
+    const existing = Storage.get('fv_users') || [];
+    if (existing.find(u => u.email === email)) {
+      document.getElementById('err-email').textContent = 'Email già registrata';
+      showErr('err-email', true);
+      return;
+    }
+
+    giftCode = generateGiftCode();
+    const user = {
+      id: Date.now(),
+      name, surname, email, password,
+      avatar: '../assets/images/avatar-default.svg',
+      subscription: 'none',
+      giftCode,
+      joinDate: new Date().toISOString(),
+    };
+
+    // Save to "users db"
+    existing.push(user);
+    Storage.set('fv_users', existing);
+    Auth.setUser(user);
+
+    // Show gift card
+    document.getElementById('gc-code').textContent = giftCode;
+    document.getElementById('giftcard-modal').classList.add('open');
+  });
+
+  // Gift card flip
+  document.getElementById('giftcard').addEventListener('click', () => {
+    if (!cardFlipped) {
+      document.getElementById('giftcard').classList.add('flipped');
+      document.getElementById('gc-actions').classList.remove('hidden');
+      cardFlipped = true;
+    }
+  });
+});
+
+function copyCode() {
+  navigator.clipboard.writeText(giftCode).then(() => Toast.show('Codice copiato!', 'success'));
+}
+</script>
+</body>
+</html>

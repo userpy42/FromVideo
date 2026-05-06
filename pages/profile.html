@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profilo — FromVideo</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/profile.css" />
+</head>
+<body>
+<nav class="navbar">
+  <a href="../index.html" class="navbar-logo">FROM<span>VIDEO</span></a>
+  <ul class="navbar-nav" id="main-nav">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="catalog.html">Catalogo</a></li>
+    <li><a href="plans.html">Abbonamenti</a></li>
+    <li id="nav-login-btn" class="hidden"><a href="login.html" class="btn btn-primary btn-sm">Accedi</a></li>
+    <li id="nav-user-menu" style="display:flex;align-items:center;gap:0.75rem">
+      <a href="profile.html"><img src="../assets/images/avatar-default.svg" alt="avatar" class="nav-avatar" id="nav-avatar"/></a>
+    </li>
+  </ul>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-wrapper">
+  <div class="container profile-container">
+
+    <!-- Sidebar -->
+    <aside class="profile-sidebar">
+      <div class="profile-avatar-wrap">
+        <div class="profile-avatar-ring">
+          <img src="../assets/images/avatar-default.svg" alt="avatar" class="profile-avatar-img" id="profile-avatar-display" />
+          <button class="avatar-edit-btn" onclick="document.getElementById('avatar-input').click()">✎</button>
+          <input type="file" id="avatar-input" accept="image/*" style="display:none" />
+        </div>
+        <div class="profile-name" id="profile-name-display">Utente</div>
+        <div class="profile-email-display" id="profile-email-display">email@email.com</div>
+        <span class="badge badge-blue" id="profile-sub-badge">Nessun piano</span>
+      </div>
+
+      <nav class="profile-nav">
+        <button class="pnav-item active" data-tab="overview">👤 Panoramica</button>
+        <button class="pnav-item" data-tab="settings">⚙️ Impostazioni</button>
+        <button class="pnav-item" data-tab="subscription">💳 Abbonamento</button>
+        <button class="pnav-item" data-tab="security">🔒 Sicurezza</button>
+        <button class="pnav-item logout-btn" onclick="confirmLogout()">🚪 Esci</button>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="profile-main">
+
+      <!-- Overview Tab -->
+      <div class="tab-content active" id="tab-overview">
+        <h2 class="tab-title">Panoramica Account</h2>
+        <div class="overview-grid">
+          <div class="stat-card card">
+            <div class="stat-icon">🎬</div>
+            <div class="stat-value" id="stat-films">4</div>
+            <div class="stat-label">Film disponibili</div>
+          </div>
+          <div class="stat-card card">
+            <div class="stat-icon">📺</div>
+            <div class="stat-value" id="stat-series">4</div>
+            <div class="stat-label">Serie disponibili</div>
+          </div>
+          <div class="stat-card card">
+            <div class="stat-icon">📅</div>
+            <div class="stat-value" id="stat-join">—</div>
+            <div class="stat-label">Membro da</div>
+          </div>
+          <div class="stat-card card">
+            <div class="stat-icon">⭐</div>
+            <div class="stat-value" id="stat-plan">—</div>
+            <div class="stat-label">Piano attivo</div>
+          </div>
+        </div>
+
+        <div class="profile-info-card card">
+          <h3>Informazioni Account</h3>
+          <div class="info-rows">
+            <div class="info-row"><span>Nome completo</span><strong id="info-name">—</strong></div>
+            <div class="info-row"><span>Email</span><strong id="info-email">—</strong></div>
+            <div class="info-row"><span>Membro dal</span><strong id="info-join">—</strong></div>
+            <div class="info-row"><span>Piano</span><strong id="info-plan">—</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings Tab -->
+      <div class="tab-content" id="tab-settings">
+        <h2 class="tab-title">Impostazioni</h2>
+        <div class="settings-sections">
+          <div class="settings-section card">
+            <h3>Dati Personali</h3>
+            <div class="settings-form">
+              <div class="form-group">
+                <label class="form-label">Nome</label>
+                <input type="text" class="form-input" id="set-name" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Cognome</label>
+                <input type="text" class="form-input" id="set-surname" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email (non modificabile)</label>
+                <input type="email" class="form-input" id="set-email" disabled style="opacity:0.5" />
+              </div>
+              <button class="btn btn-primary" onclick="saveProfile()">Salva Modifiche</button>
+            </div>
+          </div>
+
+          <div class="settings-section card">
+            <h3>Immagine Profilo</h3>
+            <div class="avatar-options">
+              <img src="../assets/images/avatar1.svg" class="avatar-opt" onclick="selectAvatar('../assets/images/avatar1.svg')" />
+              <img src="../assets/images/avatar2.svg" class="avatar-opt" onclick="selectAvatar('../assets/images/avatar2.svg')" />
+              <img src="../assets/images/avatar3.svg" class="avatar-opt" onclick="selectAvatar('../assets/images/avatar3.svg')" />
+              <img src="../assets/images/avatar-default.svg" class="avatar-opt" onclick="selectAvatar('../assets/images/avatar-default.svg')" />
+            </div>
+            <p class="text-muted" style="font-size:0.8rem;margin-top:0.75rem">Oppure carica una foto personalizzata dal tasto ✎ sul profilo.</p>
+          </div>
+
+          <div class="settings-section card">
+            <h3>Preferenze di Visione</h3>
+            <div class="toggle-list">
+              <div class="toggle-item">
+                <div><strong>Riproduzione automatica</strong><p>Avvia automaticamente l'episodio successivo</p></div>
+                <label class="toggle"><input type="checkbox" checked /><span class="slider"></span></label>
+              </div>
+              <div class="toggle-item">
+                <div><strong>Anteprime audio</strong><p>Riproduci audio nelle anteprime del catalogo</p></div>
+                <label class="toggle"><input type="checkbox" /><span class="slider"></span></label>
+              </div>
+              <div class="toggle-item">
+                <div><strong>Sottotitoli automatici</strong><p>Mostra sottotitoli quando disponibili</p></div>
+                <label class="toggle"><input type="checkbox" checked /><span class="slider"></span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subscription Tab -->
+      <div class="tab-content" id="tab-subscription">
+        <h2 class="tab-title">Il tuo Abbonamento</h2>
+        <div id="sub-content"></div>
+      </div>
+
+      <!-- Security Tab -->
+      <div class="tab-content" id="tab-security">
+        <h2 class="tab-title">Sicurezza</h2>
+        <div class="settings-section card">
+          <h3>Cambia Password</h3>
+          <div class="settings-form">
+            <div class="form-group">
+              <label class="form-label">Password attuale</label>
+              <input type="password" class="form-input" id="old-pw" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nuova password</label>
+              <input type="password" class="form-input" id="new-pw" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Conferma nuova password</label>
+              <input type="password" class="form-input" id="conf-pw" />
+            </div>
+            <button class="btn btn-primary" onclick="changePassword()">Aggiorna Password</button>
+          </div>
+        </div>
+        <div class="settings-section card mt-2">
+          <h3>Sessioni Attive</h3>
+          <div class="session-item">
+            <div>
+              <strong>💻 Questo dispositivo</strong>
+              <p class="text-muted" style="font-size:0.8rem">Browser corrente · Attivo adesso</p>
+            </div>
+            <span class="badge badge-green">Attivo</span>
+          </div>
+        </div>
+        <div class="settings-section card mt-2 danger-zone">
+          <h3>Zona Pericolosa</h3>
+          <p class="text-muted" style="font-size:0.9rem;margin-bottom:1rem">Eliminando l'account perderai tutti i dati.</p>
+          <button class="btn btn-danger" onclick="deleteAccount()">🗑 Elimina Account</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Logout Confirm -->
+<div class="modal-overlay" id="logout-modal">
+  <div class="modal" style="max-width:380px">
+    <div class="modal-header">
+      <span class="modal-title">Conferma Uscita</span>
+      <button class="modal-close" onclick="closeModal('logout-modal')">✕</button>
+    </div>
+    <p style="margin-bottom:1.5rem;color:var(--text-secondary)">Sei sicuro di voler uscire dal tuo account?</p>
+    <div style="display:flex;gap:1rem">
+      <button class="btn btn-outline w-full" onclick="closeModal('logout-modal')">Annulla</button>
+      <button class="btn btn-primary w-full" onclick="Auth.logout()">Esci</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container"></div>
+<script src="../js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  if (!Auth.requireAuth()) return;
+  loadProfile();
+  initTabs();
+  initAvatarUpload();
+});
+
+function loadProfile() {
+  const user = Auth.getUser();
+  if (!user) return;
+  const fullName = `${user.name} ${user.surname}`;
+  document.getElementById('profile-name-display').textContent = fullName;
+  document.getElementById('profile-email-display').textContent = user.email;
+  if (user.avatar) {
+    document.getElementById('profile-avatar-display').src = user.avatar;
+    const navAv = document.getElementById('nav-avatar');
+    if (navAv) navAv.src = user.avatar;
+  }
+  const planNames = { none:'Nessun piano', base:'Base', standard:'Standard', premium:'Premium' };
+  const sub = user.subscription || 'none';
+  document.getElementById('profile-sub-badge').textContent = planNames[sub] || sub;
+
+  // Stats
+  document.getElementById('stat-join').textContent = new Date(user.joinDate).toLocaleDateString('it-IT',{month:'short',year:'numeric'});
+  document.getElementById('stat-plan').textContent = planNames[sub] || '—';
+
+  // Info
+  document.getElementById('info-name').textContent = fullName;
+  document.getElementById('info-email').textContent = user.email;
+  document.getElementById('info-join').textContent = formatDate(user.joinDate);
+  document.getElementById('info-plan').textContent = planNames[sub];
+
+  // Settings
+  document.getElementById('set-name').value = user.name;
+  document.getElementById('set-surname').value = user.surname;
+  document.getElementById('set-email').value = user.email;
+
+  // Subscription tab
+  const subHtml = sub === 'none' ? `
+    <div class="card" style="text-align:center;padding:2.5rem">
+      <div style="font-size:3rem;margin-bottom:1rem">💳</div>
+      <h3>Nessun abbonamento attivo</h3>
+      <p class="text-secondary" style="margin:1rem 0">Attiva un piano per accedere a tutto il catalogo.</p>
+      <a href="plans.html" class="btn btn-primary btn-lg">Scegli un Piano</a>
+    </div>
+  ` : `
+    <div class="card sub-active-card">
+      <div class="sub-active-header">
+        <div>
+          <div class="sub-active-name">${planNames[sub]}</div>
+          <div class="sub-active-date">Attivo dal ${formatDate(user.subDate)}</div>
+        </div>
+        <span class="badge badge-green">✓ Attivo</span>
+      </div>
+      <div class="sub-perks">
+        ${sub === 'base' ? '<li>✓ 1 schermo</li><li>✓ HD</li>' : ''}
+        ${sub === 'standard' ? '<li>✓ 2 schermi</li><li>✓ Full HD</li><li>✓ Download</li>' : ''}
+        ${sub === 'premium' ? '<li>✓ 4 schermi</li><li>✓ 4K UHD</li><li>✓ Download illimitati</li><li>✓ Dolby Atmos</li>' : ''}
+      </div>
+      <div class="sub-actions">
+        <a href="plans.html" class="btn btn-outline">Cambia Piano</a>
+        <button class="btn btn-ghost" onclick="cancelSub()">Disdici</button>
+      </div>
+    </div>
+  `;
+  document.getElementById('sub-content').innerHTML = subHtml;
+}
+
+function initTabs() {
+  document.querySelectorAll('.pnav-item[data-tab]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.pnav-item').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+}
+
+function initAvatarUpload() {
+  document.getElementById('avatar-input').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      const src = ev.target.result;
+      selectAvatar(src);
+      Toast.show('Immagine profilo aggiornata!', 'success');
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function selectAvatar(src) {
+  document.getElementById('profile-avatar-display').src = src;
+  const navAv = document.getElementById('nav-avatar');
+  if (navAv) navAv.src = src;
+  const user = Auth.getUser();
+  user.avatar = src;
+  Auth.setUser(user);
+  const users = Storage.get('fv_users') || [];
+  const idx = users.findIndex(u => u.id === user.id);
+  if (idx > -1) { users[idx] = user; Storage.set('fv_users', users); }
+}
+
+function saveProfile() {
+  const user = Auth.getUser();
+  user.name = document.getElementById('set-name').value.trim() || user.name;
+  user.surname = document.getElementById('set-surname').value.trim() || user.surname;
+  Auth.setUser(user);
+  const users = Storage.get('fv_users') || [];
+  const idx = users.findIndex(u => u.id === user.id);
+  if (idx > -1) { users[idx] = user; Storage.set('fv_users', users); }
+  loadProfile();
+  Toast.show('Profilo salvato!', 'success');
+}
+
+function changePassword() {
+  const user = Auth.getUser();
+  const oldPw = document.getElementById('old-pw').value;
+  const newPw = document.getElementById('new-pw').value;
+  const confPw = document.getElementById('conf-pw').value;
+  if (oldPw !== user.password) { Toast.show('Password attuale errata', 'error'); return; }
+  if (newPw.length < 6) { Toast.show('La nuova password deve avere almeno 6 caratteri', 'error'); return; }
+  if (newPw !== confPw) { Toast.show('Le password non coincidono', 'error'); return; }
+  user.password = newPw;
+  Auth.setUser(user);
+  const users = Storage.get('fv_users') || [];
+  const idx = users.findIndex(u => u.id === user.id);
+  if (idx > -1) { users[idx] = user; Storage.set('fv_users', users); }
+  document.getElementById('old-pw').value = '';
+  document.getElementById('new-pw').value = '';
+  document.getElementById('conf-pw').value = '';
+  Toast.show('Password aggiornata!', 'success');
+}
+
+function cancelSub() {
+  if (!confirm('Vuoi davvero disdire l\'abbonamento?')) return;
+  const user = Auth.getUser();
+  user.subscription = 'none';
+  Auth.setUser(user);
+  loadProfile();
+  Toast.show('Abbonamento disdetto', 'info');
+}
+
+function deleteAccount() {
+  if (!confirm('ATTENZIONE: Eliminare l\'account è irreversibile. Continuare?')) return;
+  const user = Auth.getUser();
+  const users = (Storage.get('fv_users') || []).filter(u => u.id !== user.id);
+  Storage.set('fv_users', users);
+  Auth.logout();
+}
+
+function confirmLogout() { document.getElementById('logout-modal').classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+</script>
+</body>
+</html>
