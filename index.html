@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FromVideo — Streaming Digitale</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <a href="index.html" class="navbar-logo">FROM<span>VIDEO</span></a>
+  <ul class="navbar-nav" id="main-nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="pages/catalog.html">Catalogo</a></li>
+    <li><a href="pages/plans.html">Abbonamenti</a></li>
+    <li id="nav-login-btn"><a href="pages/login.html" class="btn btn-primary btn-sm">Accedi</a></li>
+    <li id="nav-user-menu" class="hidden" style="display:flex;align-items:center;gap:0.75rem">
+      <a href="pages/catalog.html">Catalogo</a>
+      <a href="pages/profile.html"><img src="assets/images/avatar-default.svg" alt="avatar" class="nav-avatar" id="nav-avatar" /></a>
+    </li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <div class="hero-badge"><span class="badge badge-blue">✦ Nuovo — Anno 2025/2026</span></div>
+    <h1 class="hero-title display-font">IL CINEMA<br><span class="hero-title-accent">A PORTATA DI CLICK</span></h1>
+    <p class="hero-subtitle">Film, serie TV e contenuti esclusivi. Ovunque tu sia, su qualsiasi dispositivo. Un abbonamento, tutto incluso.</p>
+    <div class="hero-cta">
+      <a href="pages/register.html" class="btn btn-primary btn-lg">Inizia Gratis</a>
+      <a href="pages/catalog.html" class="btn btn-outline btn-lg">Esplora il Catalogo</a>
+    </div>
+    <p class="hero-note">Nessuna carta richiesta · Disdici quando vuoi · Supporto 24/7</p>
+  </div>
+  <div class="hero-preview">
+    <div class="preview-grid">
+      <div class="preview-card pc-1"><div class="pc-label">Film1</div></div>
+      <div class="preview-card pc-2"><div class="pc-label">Serie1</div></div>
+      <div class="preview-card pc-3"><div class="pc-label">Film2</div></div>
+      <div class="preview-card pc-4"><div class="pc-label">Serie2</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="section features-section" id="features">
+  <div class="container">
+    <div class="section-header text-center">
+      <p class="section-eyebrow">Perché sceglierci</p>
+      <h2 class="section-title">Tutto quello che ami,<br>in un unico posto</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card card">
+        <div class="feature-icon">🎬</div>
+        <h3>Catalogo Vastissimo</h3>
+        <p>Film, serie TV e contenuti esclusivi aggiornati ogni settimana. Sempre qualcosa di nuovo da scoprire.</p>
+      </div>
+      <div class="feature-card card">
+        <div class="feature-icon">📱</div>
+        <h3>Multi-Dispositivo</h3>
+        <p>Guarda su smartphone, tablet, computer e TV. Sincronizzato in tempo reale su tutti i tuoi device.</p>
+      </div>
+      <div class="feature-card card">
+        <div class="feature-icon">🎁</div>
+        <h3>Gift Card di Benvenuto</h3>
+        <p>Ogni nuovo utente riceve una gift card esclusiva per provare FromVideo senza costi.</p>
+      </div>
+      <div class="feature-card card">
+        <div class="feature-icon">🔒</div>
+        <h3>Sicuro e Privato</h3>
+        <p>I tuoi dati sono protetti. Nessuna pubblicità, nessuna condivisione con terze parti.</p>
+      </div>
+      <div class="feature-card card">
+        <div class="feature-icon">⚡</div>
+        <h3>Streaming HD</h3>
+        <p>Qualità video fino a 4K Ultra HD con audio Dolby. Un'esperienza cinematografica a casa tua.</p>
+      </div>
+      <div class="feature-card card">
+        <div class="feature-icon">💬</div>
+        <h3>Supporto Dedicato</h3>
+        <p>Assistenza clienti disponibile 24/7. Risolviamo ogni problema in pochi minuti.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Plans Preview -->
+<section class="section plans-preview">
+  <div class="container">
+    <div class="section-header text-center">
+      <p class="section-eyebrow">Prezzi trasparenti</p>
+      <h2 class="section-title">Scegli il piano giusto per te</h2>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card card">
+        <div class="plan-name">Base</div>
+        <div class="plan-price">€4<span>,99</span><small>/mese</small></div>
+        <ul class="plan-features">
+          <li>✓ Film e Serie TV</li>
+          <li>✓ 1 schermo</li>
+          <li>✓ Qualità HD</li>
+          <li class="disabled">✗ Download offline</li>
+        </ul>
+        <a href="pages/plans.html" class="btn btn-outline w-full">Inizia</a>
+      </div>
+      <div class="plan-card card plan-popular">
+        <div class="plan-badge badge badge-blue">Più Scelto</div>
+        <div class="plan-name">Standard</div>
+        <div class="plan-price">€9<span>,99</span><small>/mese</small></div>
+        <ul class="plan-features">
+          <li>✓ Film e Serie TV</li>
+          <li>✓ 2 schermi</li>
+          <li>✓ Qualità Full HD</li>
+          <li>✓ Download offline</li>
+        </ul>
+        <a href="pages/plans.html" class="btn btn-primary w-full">Inizia</a>
+      </div>
+      <div class="plan-card card">
+        <div class="plan-name">Premium</div>
+        <div class="plan-price">€19<span>,99</span><small>/mese</small></div>
+        <ul class="plan-features">
+          <li>✓ Film e Serie TV</li>
+          <li>✓ 4 schermi</li>
+          <li>✓ Qualità 4K UHD</li>
+          <li>✓ Download offline</li>
+        </ul>
+        <a href="pages/plans.html" class="btn btn-outline w-full">Inizia</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="section cta-banner">
+  <div class="container">
+    <div class="cta-inner card">
+      <div class="cta-text">
+        <h2>Pronto a iniziare?</h2>
+        <p>Registrati ora e ricevi subito la tua gift card di benvenuto.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="pages/register.html" class="btn btn-primary btn-lg">Crea il tuo account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-brand">
+      <span class="navbar-logo">FROM<span>VIDEO</span></span>
+      <p>Piattaforma di streaming digitale simulata.<br>Progetto tecnico scolastico — A.S. 2025/2026</p>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 FromVideo — Tesina Tecnica di <strong>Kristian Lefter</strong>, Classe 4I</p>
+      <p class="text-muted">Nessun contenuto reale · Solo dimostrazione</p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast-container"></div>
+<script src="js/app.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const user = Auth.getUser();
+    const navMenu = document.getElementById('nav-user-menu');
+    const loginBtn = document.getElementById('nav-login-btn');
+    if(user){ if(navMenu) navMenu.classList.remove('hidden'); if(loginBtn) loginBtn.classList.add('hidden'); }
+  });
+</script>
+</body>
+</html>
