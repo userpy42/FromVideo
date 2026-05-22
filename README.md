@@ -41,7 +41,8 @@ fromvideo/
 ├── index.html              # Homepage
 ├── README.md               # Documentazione
 ├── assets/
-│   └── images/             # Avatar SVG
+│   ├── gif/                # Catalogo Film e Serie
+│   ├── images/             # Avatar SVG
 ├── css/
 │   ├── style.css           # Stili globali + componenti
 │   ├── home.css            # Stili homepage
