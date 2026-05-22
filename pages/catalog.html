@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../css/catalog.css" />
 </head>
 <body>
+
 <nav class="navbar">
   <a href="../index.html" class="navbar-logo">FROM<span>VIDEO</span></a>
   <ul class="navbar-nav" id="main-nav">
@@ -16,14 +17,17 @@
     <li><a href="plans.html">Abbonamenti</a></li>
     <li id="nav-login-btn"><a href="login.html" class="btn btn-primary btn-sm">Accedi</a></li>
     <li id="nav-user-menu" class="hidden" style="display:flex;align-items:center;gap:0.75rem">
-      <a href="profile.html"><img src="../assets/images/avatar-default.svg" alt="avatar" class="nav-avatar" id="nav-avatar"/></a>
+      <a href="profile.html">
+        <img src="../assets/images/avatar-default.svg" alt="avatar" class="nav-avatar" id="nav-avatar"/>
+      </a>
     </li>
   </ul>
   <div class="hamburger"><span></span><span></span><span></span></div>
 </nav>
 
 <div class="page-wrapper">
-  <!-- Lock Screen -->
+
+  <!-- LOCK SCREEN -->
   <div id="lock-screen" class="lock-screen hidden">
     <div class="lock-card card">
       <div class="lock-icon">🔒</div>
@@ -31,15 +35,18 @@
       <p>Attiva un abbonamento oppure usa la tua gift card per accedere a film e serie TV.</p>
       <div class="lock-actions">
         <a href="plans.html" class="btn btn-primary btn-lg">Abbonati ora</a>
-        <a href="plans.html#gc" class="btn btn-outline btn-lg">Usa Gift Card</a>
+        <a href="plans.html" class="btn btn-outline btn-lg">Usa Gift Card</a>
       </div>
-      <p class="text-muted" style="font-size:0.8rem;margin-top:1rem">Non sei registrato? <a href="register.html" style="color:var(--blue-accent)">Crea un account</a></p>
+      <p class="text-muted" style="font-size:0.8rem;margin-top:1rem">
+        Non sei registrato? <a href="register.html" style="color:var(--blue-accent)">Crea un account</a>
+      </p>
     </div>
   </div>
 
-  <!-- Catalog Content -->
+  <!-- CATALOGO -->
   <div id="catalog-content" class="hidden">
-    <!-- Hero Banner -->
+
+    <!-- Hero -->
     <div class="catalog-hero">
       <div class="catalog-hero-bg"></div>
       <div class="container catalog-hero-inner">
@@ -47,7 +54,7 @@
         <h1 class="catalog-hero-title display-font">FILM1</h1>
         <p class="catalog-hero-desc">Un'avventura epica che attraversa continenti e secoli. Il film più atteso dell'anno è finalmente disponibile su FromVideo.</p>
         <div class="catalog-hero-actions">
-          <button class="btn btn-primary btn-lg" onclick="openPlayer('Film1','film')">▶ Guarda Ora</button>
+          <button class="btn btn-primary btn-lg" onclick="openPlayer('Film1','film','film1')">▶ Guarda Ora</button>
           <button class="btn btn-outline btn-lg" onclick="openDetails('film1')">ℹ Info</button>
         </div>
         <div class="catalog-hero-meta">
@@ -58,7 +65,7 @@
     </div>
 
     <div class="container catalog-main">
-      <!-- Search & Filter -->
+      <!-- Filtri -->
       <div class="catalog-filters">
         <input type="text" class="form-input catalog-search" id="catalog-search" placeholder="🔍  Cerca film o serie..." />
         <div class="filter-tabs">
@@ -67,14 +74,12 @@
           <button class="filter-tab" data-filter="serie">Serie TV</button>
         </div>
       </div>
-
-      <!-- Films Row -->
+      <!-- Film -->
       <section class="catalog-row" id="films-row">
         <h2 class="row-title">🎬 Film</h2>
         <div class="content-grid" id="films-grid"></div>
       </section>
-
-      <!-- Series Row -->
+      <!-- Serie -->
       <section class="catalog-row" id="series-row">
         <h2 class="row-title">📺 Serie TV</h2>
         <div class="content-grid" id="series-grid"></div>
@@ -83,39 +88,49 @@
   </div>
 </div>
 
-<!-- Player Modal -->
+<!-- ═══════════════ PLAYER MODAL ═══════════════ -->
 <div class="modal-overlay" id="player-modal">
   <div class="modal player-modal">
     <div class="modal-header">
-      <span class="modal-title" id="player-title">Film1</span>
+      <span class="modal-title" id="player-title">Player</span>
       <button class="modal-close" onclick="closeModal('player-modal')">✕</button>
     </div>
     <div class="player-screen">
-      <div class="player-placeholder">
-        <div class="player-play-btn">▶</div>
-        <p id="player-now-playing">Film1</p>
-        <span class="badge badge-blue">Simulazione · Nessun video reale</span>
+
+      <!-- GIF (film) -->
+      <div class="player-gif-container" id="player-gif-container"></div>
+
+      <!-- Schermata nera (serie / nessuna gif) -->
+      <div class="player-black-screen" id="player-black-screen" style="display:none">
+        <div class="player-black-icon">▶</div>
+        <p class="player-label" id="player-label"></p>
+        <span class="badge badge-blue" style="font-size:0.72rem">Simulazione · Nessun video reale</span>
       </div>
+
+      <!-- Controlli (sempre visibili) -->
       <div class="player-controls">
-        <div class="player-bar"><div class="player-progress" id="player-progress"></div></div>
+        <div class="player-bar" id="player-bar" onclick="seekBar(event)">
+          <div class="player-progress" id="player-progress"></div>
+        </div>
         <div class="player-meta">
-          <span id="player-time">00:00</span>
+          <span class="player-time" id="player-time">00:00</span>
           <div class="player-btns">
-            <button class="btn-ghost btn-sm" id="play-pause-btn" onclick="togglePlay()">▶ Play</button>
-            <button class="btn-ghost btn-sm">⛶ Fullscreen</button>
+            <button class="btn btn-primary btn-sm" id="play-pause-btn" onclick="togglePlay()">▶ Play</button>
+            <button class="btn btn-outline btn-sm" onclick="playSeconds=0;stopPlay();updateTimerUI()">↺</button>
           </div>
-          <span>2:18:00</span>
+          <span class="player-total">2:18:00</span>
         </div>
       </div>
+
     </div>
   </div>
 </div>
 
-<!-- Details Modal -->
+<!-- ═══════════════ DETAILS MODAL ═══════════════ -->
 <div class="modal-overlay" id="details-modal">
   <div class="modal details-modal">
     <div class="modal-header">
-      <span class="modal-title" id="details-title">Film1</span>
+      <span class="modal-title" id="details-title">Dettagli</span>
       <button class="modal-close" onclick="closeModal('details-modal')">✕</button>
     </div>
     <div id="details-body"></div>
