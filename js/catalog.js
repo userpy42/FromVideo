@@ -23,10 +23,10 @@ function formatSec(sec) {
    DATI FILM
    ═══════════════════════════════════════ */
 const FILMS = [
-  { id:'film1', title:'Film1', type:'film', year:2024, genre:'Azione',      duration:'2h 18m', rating:'8.2', color:'#1e3a8a', desc:'Un\'avventura epica che attraversa continenti e secoli. Il film più atteso dell\'anno con effetti speciali mozzafiato.',  gif:'../assets/gif/film1.gif' },
-  { id:'film2', title:'Film2', type:'film', year:2023, genre:'Thriller',     duration:'1h 54m', rating:'7.8', color:'#164e63', desc:'Un thriller psicologico che ti terrà incollato allo schermo fino all\'ultimo minuto. Niente è come sembra.',               gif:'../assets/gif/film2.gif' },
-  { id:'film3', title:'Film3', type:'film', year:2024, genre:'Fantascienza', duration:'2h 35m', rating:'9.0', color:'#1e1b4b', desc:'Un\'odissea fantascientifica che esplora i confini dell\'universo e della coscienza umana.',                             gif:'../assets/gif/film3.gif' },
-  { id:'film4', title:'Film4', type:'film', year:2023, genre:'Drammatico',   duration:'1h 48m', rating:'7.5', color:'#14532d', desc:'Una storia commovente di amicizia e sacrificio ambientata nella Seconda Guerra Mondiale.',                               gif:'../assets/gif/film4.gif' },
+  { id:'film1', title:'Film1', type:'film', year:2026, genre:'GIF',      duration:'15s', rating:'1.2', color:'#1e3a8a', desc:'Un\'testo', gif:'../assets/gif/film1.gif' },
+  { id:'film2', title:'Film2', type:'film', year:2026, genre:'GIF',     duration:'15s', rating:'2.8', color:'#164e63', desc:'testo', gif:'../assets/gif/film2.gif' },
+  { id:'film3', title:'Film3', type:'film', year:2026, genre:'GIF', duration:'15s', rating:'1.4', color:'#1e1b4b', desc:'Un\'testo.', gif:'../assets/gif/film3.gif' },
+  { id:'film4', title:'Film4', type:'film', year:2026, genre:'GIF',   duration:'15s', rating:'3.5', color:'#14532d', desc:'testo', gif:'../assets/gif/film4.gif' },
 ];
 
 /* ═══════════════════════════════════════
@@ -34,10 +34,10 @@ const FILMS = [
    ogni episodio ha la sua gif individuale
    ═══════════════════════════════════════ */
 const SERIES = [
-  { id:'serie1', title:'Serie1', type:'serie', year:2024, genre:'Sci-Fi',   seasons:1, episodes:6, rating:'8.9', color:'#1e3a8a', desc:'Un\'avvincente serie fantascientifica ambientata in un futuro distopico dove la tecnologia ha sostituito l\'umanità.' },
-  { id:'serie2', title:'Serie2', type:'serie', year:2023, genre:'Crime',    seasons:1, episodes:6, rating:'8.4', color:'#7f1d1d', desc:'Un detective tormentato dal passato indaga su una serie di omicidi misteriosi in una città corrotta.' },
-  { id:'serie3', title:'Serie3', type:'serie', year:2024, genre:'Fantasy',  seasons:1, episodes:6, rating:'8.7', color:'#14532d', desc:'Draghi, magia e battaglie epiche in un mondo fantasy dove i destini di regni interi sono in bilico.' },
-  { id:'serie4', title:'Serie4', type:'serie', year:2023, genre:'Thriller', seasons:1, episodes:6, rating:'8.1', color:'#713f12', desc:'Una famiglia normale si trova coinvolta in una cospirazione internazionale che minaccia di distruggerla.' },
+  { id:'serie1', title:'Serie1', type:'serie', year:2026, genre:'GIF',   seasons:1, episodes:6, rating:'1.9', color:'#1e3a8a', desc:'Un\'testo' },
+  { id:'serie2', title:'Serie2', type:'serie', year:2026, genre:'GIF',    seasons:1, episodes:6, rating:'1.4', color:'#7f1d1d', desc:'testo' },
+  { id:'serie3', title:'Serie3', type:'serie', year:2026, genre:'GIF',  seasons:1, episodes:6, rating:'1.7', color:'#14532d', desc:'testo' },
+  { id:'serie4', title:'Serie4', type:'serie', year:2026, genre:'GIF', seasons:1, episodes:6, rating:'3.1', color:'#713f12', desc:'testo' },
 ];
 
 /* Titoli episodi */
