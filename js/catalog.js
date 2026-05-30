@@ -23,10 +23,10 @@ function formatSec(sec) {
    DATI FILM
    ═══════════════════════════════════════ */
 const FILMS = [
-  { id:'film1', title:'Film1', type:'film', year:2026, genre:'GIF',      duration:'15s', rating:'1.2', color:'#1e3a8a', desc:'Un\'testo', gif:'../assets/gif/film1.gif' },
-  { id:'film2', title:'Film2', type:'film', year:2026, genre:'GIF',     duration:'15s', rating:'2.8', color:'#164e63', desc:'testo', gif:'../assets/gif/film2.gif' },
-  { id:'film3', title:'Film3', type:'film', year:2026, genre:'GIF', duration:'15s', rating:'1.4', color:'#1e1b4b', desc:'Un\'testo.', gif:'../assets/gif/film3.gif' },
-  { id:'film4', title:'Film4', type:'film', year:2026, genre:'GIF',   duration:'15s', rating:'3.5', color:'#14532d', desc:'testo', gif:'../assets/gif/film4.gif' },
+  { id:'film1', title:'Film1', type:'film', year:2026, genre:'GIF',      duration:'15m', rating:'1.2', color:'#1e3a8a', desc:'Un\'testo', gif:'../assets/gif/film1.gif' },
+  { id:'film2', title:'Film2', type:'film', year:2026, genre:'GIF',     duration:'15m', rating:'2.8', color:'#164e63', desc:'testo', gif:'../assets/gif/film2.gif' },
+  { id:'film3', title:'Film3', type:'film', year:2026, genre:'GIF', duration:'15m', rating:'1.4', color:'#1e1b4b', desc:'Un\'testo.', gif:'../assets/gif/film3.gif' },
+  { id:'film4', title:'Film4', type:'film', year:2026, genre:'GIF',   duration:'15m', rating:'3.5', color:'#14532d', desc:'testo', gif:'../assets/gif/film4.gif' },
 ];
 
 /* ═══════════════════════════════════════
@@ -42,10 +42,10 @@ const SERIES = [
 
 /* Titoli episodi */
 const EPISODE_TITLES = {
-  serie1: ['Il Risveglio',       'La Rete',       'Codice Rosso',          'Il Tradimento',    'Fuga dal Sistema', 'L\'Alba'      ],
-  serie2: ['Prima del Crimine',  'Piste Fredde',  'Il Testimone',          'Ombre nel Buio',   'La Confessione',   'Giustizia'    ],
-  serie3: ['Il Prescelto',       'La Profezia',   'Fuoco e Sangue',        'La Caduta',        'Il Ritorno',       'La Corona'    ],
-  serie4: ['Segreti di Famiglia','La Chiamata',   'Punto di Non Ritorno',  'Colpevole',        'La Fuga',          'Rivelazioni'  ],
+  serie1: ['EP 1',       'EP 2',       'EP 3',          'EP 4',    'EP 5', 'EP 6'      ],
+  serie2: ['EP 1',  'EP 2',  'EP 3',          'EP 4',   'EP 5',   'EP 6'    ],
+  serie3: ['EP 1',       'EP 2',   'EP 3',        'EP 4',        'EP 5',       'EP 6'    ],
+  serie4: ['EP 1','EP 2',   'EP 3',  'EP 4',        'EP 5',          'EP 6'  ],
 };
 
 /* GIF episodi: serie1_ep1.gif … serie4_ep6.gif
