@@ -65,9 +65,9 @@
 .player-screen { background:#000;position:relative }
 
 /* zona gif */
-.player-gif-wrap { position:relative;width:100%;background:#000;display:flex;align-items:center;justify-content:center }
-.player-gif { width:100%;height:380px;object-fit:cover;display:block }
-
+.player-gif-wrap { position:relative;width:10x;object-fit:cover;display:block }
+0%;background:#000;display:flex;align-items:center;justify-content:center }
+.player-gif { width:100%;height:380p
 /* overlay pausa — schermo scuro semitrasparente + icona ⏸ */
 .pause-overlay {
   position:absolute;inset:0;
@@ -120,7 +120,8 @@
 /* ══════════════════════════════════════════
    DETAILS MODAL
    ══════════════════════════════════════════ */
-.details-modal { max-width:640px; max-height:90vh; overflow-y:auto; }
+.details-modal { max-width:640px; max-height:85vh; display:flex; flex-direction:column; }
+.details-modal #details-body { overflow-y:auto; flex:1; }
 .details-thumb { height:170px;border-radius:var(--radius);margin-bottom:1.5rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem }
 .details-meta  { margin-bottom:1.5rem }
 
