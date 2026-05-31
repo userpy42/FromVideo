@@ -44,7 +44,7 @@
 .overview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
 .stat-card { text-align: center; padding: 1.5rem 1rem; }
 .stat-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
-.stat-value { font-size: 1.5rem; font-weight: 700; color: var(--blue-accent); }
+.stat-value { font-size: 1rem; font-weight: 700; color: var(--blue-accent); word-break: break-word; }
 .stat-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; }
 
 .profile-info-card h3 { font-size: 1rem; margin-bottom: 1rem; }
