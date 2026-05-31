@@ -156,7 +156,7 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 600; }
 
 /* ── Page Wrapper ── */
 .page-wrapper { padding-top: 64px; min-height: 100vh; }
-.container { max-width: 1500px; margin: 0 auto; padding: 0 3rem; }
+.container { max-width: 1500px; margin: 0 auto; padding: 0 5rem; }
 .section { padding: 4rem 0; }
 
 /* ── Toast ── */
