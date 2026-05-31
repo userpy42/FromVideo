@@ -156,7 +156,7 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 600; }
 
 /* ── Page Wrapper ── */
 .page-wrapper { padding-top: 64px; min-height: 100vh; }
-.container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+.container { max-width: 1500px; margin: 0 auto; padding: 0 3rem; }
 .section { padding: 4rem 0; }
 
 /* ── Toast ── */
@@ -226,4 +226,22 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 600; }
   .hamburger { display: flex; }
   .container { padding: 0 1rem; }
   .section { padding: 2.5rem 0; }
+}
+/* ── Ottimizzazione layout PC (solo desktop) ── */
+@media (min-width: 1024px) {
+  .hero-content       { max-width: 700px; }
+  .hero-preview       { width: 620px; }
+  .features-grid      { grid-template-columns: repeat(3, 1fr); }
+  .plans-grid         { grid-template-columns: repeat(3, 1fr); }
+  .plans-full-grid    { grid-template-columns: repeat(3, 1fr); }
+  .content-grid       { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  .catalog-hero       { height: 580px; }
+  .catalog-hero-title { font-size: 5.5rem; }
+  .player-modal       { max-width: 920px; }
+  .details-modal      { max-width: 800px; max-height: 88vh; overflow-y: auto; }
+  .profile-container  { grid-template-columns: 300px 1fr; gap: 2.5rem; }
+  .overview-grid      { grid-template-columns: repeat(4, 1fr); }
+  .auth-card          { max-width: 520px; }
+  .plans-page-header  { padding: 4rem 0 3rem; }
+  .faq-grid           { grid-template-columns: repeat(4, 1fr); }
 }
