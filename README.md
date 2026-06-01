@@ -16,7 +16,7 @@
 ## 🚀 Demo Live
 
 🔗 [fromvideo.netlify.app](https://fromvideo.netlify.app) _(deploy tramite Netlify)_
-
+In caso di indisponibilità, utilizzare questo link ➡️ [fromvideo.vercel.app](https://fromvideo.vercel.app) _(deploy tramite Vercel)_
 ---
 
 ## ✨ Funzionalità Implementate
