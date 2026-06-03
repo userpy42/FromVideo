@@ -56,6 +56,7 @@
   background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
   border: 1px solid rgba(96,165,250,0.4);
   transform: rotateY(180deg);
+  padding: 1rem;
 }
 .gc-logo { font-size: 1.4rem; letter-spacing: 3px; color: white; }
 .gc-gift-icon { font-size: 2.5rem; animation: pulse 2s ease infinite; }
@@ -63,14 +64,22 @@
 .gc-hint { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 0.5rem; }
 .gc-back-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-bottom: 0.25rem; }
 .gc-code {
-  font-family: 'Courier New', monospace; font-size: 1.1rem; font-weight: 700;
-  color: #60a5fa; letter-spacing: 3px; background: rgba(0,0,0,0.3);
-  padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid rgba(96,165,250,0.3);
+  font-family: 'Courier New', monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #60a5fa;
+  letter-spacing: 2px;
+  background: rgba(0,0,0,0.3);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(96,165,250,0.3);
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 .gc-back-hint { font-size: 0.72rem; color: rgba(255,255,255,0.4); text-align: center; }
-
 @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
-
 @media (max-width: 520px) {
   .auth-card { padding: 1.5rem; }
   .form-row { grid-template-columns: 1fr; }
