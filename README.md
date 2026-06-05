@@ -70,7 +70,7 @@ fromvideo/
 - **CSS3** — design moderno con variabili CSS, Grid, Flexbox, animazioni
 - **JavaScript (Vanilla)** — logica client-side, localStorage, interattività
 - **Google Fonts** — Bebas Neue (display) + Outfit (corpo testo)
-- **Netlify** — hosting e deploy automatico
+- **Netlify / Vercel** — hosting e deploy automatico
 - **GitHub** — controllo versione
 
 ---
